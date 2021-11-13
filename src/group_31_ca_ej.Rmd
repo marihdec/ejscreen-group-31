@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "Mari Herbst and Abigail Sanford"
+date: "11/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(janitor)
+library(here)
+```
+
+- Use here() to read in data with a system agnostic file path
+- Use janitor::clean_names() to make the columns more coder friendly
+
+```{r}
+ces <- read.csv(here("data", "ces3demographics.csv")) %>% # establish file path
+  clean_names() # update column names to lower snake case
+```
+
