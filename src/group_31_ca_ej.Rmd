@@ -5,8 +5,8 @@ date: "11/13/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 library(tidyverse)
 library(janitor)
@@ -22,15 +22,15 @@ ces <- read.csv(here("data", "ces3demographics.csv")) %>% # establish file path
 ```
 
 ```{r Abigail}
-# create a basic ggplot2 scatter plot graph showing `white` % on x-axis and CalEnviroScreen pollution burden score `ces_3_0_score` on the y-axis. 
+# create a basic ggplot2 plot showing `white` % on x-axis and CalEnviroScreen pollution burden score on the y-axis. 
 ggplot(data = ces, aes(x = white, y = ces_3_0_score)) + 
-  geom_hex() +
-  labs(x = "% white", y = "pollution burden score", title = "Pollution burden score by white population density") + 
-  scale_fill_gradient(low = "darkorchid4", high = "darkorchid1") + 
+  geom_hex() + # select graph type
+  labs(x = "% white", y = "pollution burden score", title = "Pollution burden score by white population density") +  # add axis titles
+  scale_fill_gradient(low = "darkorchid4", high = "darkorchid1") + # add color gradient for density 
   theme_minimal()
 
 
 ```
 
-
+Figure 1. Pollution burden score by white population density: CalEnviroScreen's pollution burden scores shown as a function of percent whiteness of the population in the region. The color scale from dark (low) to light (high) purple indicates the count of regions at a given ratio of pollution burden score to population whiteness.
 
