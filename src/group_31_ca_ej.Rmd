@@ -24,7 +24,8 @@ ces <- read.csv(here("data", "ces3demographics.csv")) %>% # establish file path
 ```{r Abigail}
 # create a basic ggplot2 scatter plot graph showing `white` % on x-axis and CalEnviroScreen pollution burden score `ces_3_0_score` on the y-axis. 
 ggplot(data = ces, aes(x = white, y = ces_3_0_score)) + 
-  geom_point()
+  geom_hex() +
+  labs(x = "% white", y = "pollution burden score", title = "Pollution burden score by white population density")
 
 
 ```
