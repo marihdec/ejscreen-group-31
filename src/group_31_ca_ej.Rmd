@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Group 31: Task 2- Environmental racism in California - cumulative pollution burden"
 author: "Mari Herbst and Abigail Sanford"
 date: "11/13/2021"
 output: html_document
@@ -8,11 +8,13 @@ output: html_document
 ```{r setup, include=FALSE, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
+# Attach Packages
 library(tidyverse)
 library(janitor)
 library(here)
 ```
 
+# Read in the Data, then Wrangle it
 - Use here() to read in data with a system agnostic file path
 - Use janitor::clean_names() to make the columns more coder friendly
 
@@ -21,16 +23,22 @@ ces <- read.csv(here("data", "ces3demographics.csv")) %>% # establish file path
   clean_names() # update column names to lower snake case
 ```
 
-```{r Abigail}
+# Data Visualization
+
+```{r}
 # create a basic ggplot2 plot showing `white` % on x-axis and CalEnviroScreen pollution burden score on the y-axis. 
 ggplot(data = ces, aes(x = white, y = ces_3_0_score)) + 
   geom_hex() + # select graph type
-  labs(x = "% white", y = "pollution burden score", title = "Pollution burden score by white population density") +  # add axis titles
+  labs(x = "White Population Percentage", y = "Pollution Burden Score", title = "Pollution Burden Score by White Population Density") +  # add axis titles
   scale_fill_gradient(low = "darkorchid4", high = "darkorchid1") + # add color gradient for density 
-  theme_minimal()
+  theme_minimal() # change the theme to minimal
 
 
 ```
 
-Figure 1. Pollution burden score by white population density: CalEnviroScreen's pollution burden scores shown as a function of percent whiteness of the population in the region. The color scale from dark (low) to light (high) purple indicates the count of regions at a given ratio of pollution burden score to population whiteness.
+**Figure 1.** Pollution burden score by white population density: CalEnviroScreen's pollution burden scores shown as a function of percent whiteness of the population in the region. The color scale from dark (low) to light (high) purple indicates the count of regions at a given ratio of pollution burden score to population whiteness.
 
+
+There is a negative correlation between the pollution burden score and the white population percentage. As pollution burden score increases, percentage of white population decreases.  
+
+**Data Citation**: Office  of  Environmental  Health  and  Hazard  Assessment,  Approaches  for  Identifying  Disadvantaged  Communities  1  (Aug.  2014). Information  available [here](http://oehha.ca.gov/ej/pdf/ApproachesnIdentifyDisadvantagedCommunitiesAug2014.pdf).
