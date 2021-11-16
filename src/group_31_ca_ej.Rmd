@@ -14,7 +14,7 @@ library(janitor)
 library(here)
 ```
 
-# Read in the Data, then Wrangle it
+# Data and clean up
 - Use here() to read in data with a system agnostic file path
 - Use janitor::clean_names() to make the columns more coder friendly
 
